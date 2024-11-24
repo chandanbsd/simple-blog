@@ -1,22 +1,23 @@
 #Visual Studio Cache
-.vs/
+*/.vs/
 
 # .NET 8
-bin/
-obj/
-out/
+*/bin/
+*/obj/
+*/out/
 *.log
 *.vs/
-.vscode/
-.vscode-test/
-.vscode-test-explorer/
-.vscode-test-explorer-log/
-.vscode-test-explorer-log.txt
-.vscode-test-explorer-log.json
-.vscode-test-explorer-log.xml
+
+*/.vscode/
+*/.vscode-test/
+*/.vscode-test-explorer/
+*/.vscode-test-explorer-log/
+*/.vscode-test-explorer-log.txt
+*/.vscode-test-explorer-log.json
+*/.vscode-test-explorer-log.xml
 
 # Rider
-.idea/
+*/.idea/
 
 #node_modules
-node_modules/
+*/node_modules/
