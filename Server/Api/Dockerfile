@@ -19,20 +19,20 @@ RUN npm install -g @angular/cli
 FROM with-node AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["SimpleBlog.Server/SimpleBlog.Server.csproj", "SimpleBlog.Server/"]
-COPY ["simpleblog.client/simpleblog.client.esproj", "simpleblog.client/"]
-RUN dotnet restore "./SimpleBlog.Server/SimpleBlog.Server.csproj"
+COPY ["Server/Api.csproj", "Server/"]
+#COPY ["client/simple-blog-client.esproj", "client/"]
+RUN dotnet restore "./Server/Api.csproj"
 COPY . .
-WORKDIR "/src/SimpleBlog.Server"
-RUN dotnet build "./SimpleBlog.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Server"
+RUN dotnet build "./Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./SimpleBlog.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SimpleBlog.Server.dll"]
+ENTRYPOINT ["dotnet", "Server.dll"]

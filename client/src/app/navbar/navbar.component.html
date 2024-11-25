@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
   <span>MyApp</span>
   <span class="spacer"></span>
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/features">Features</button>
-  <button mat-button routerLink="/pricing">Pricing</button>
+  <button mat-button >Home</button>
+  <button mat-button >Features</button>
+  <button mat-button >Pricing</button>
   <button mat-button [matMenuTriggerFor]="menu">More</button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/about">About</button>
-    <button mat-menu-item routerLink="/contact">Contact</button>
+    <button mat-menu-item >About</button>
+    <button mat-menu-item >Contact</button>
   </mat-menu>
 </mat-toolbar>
