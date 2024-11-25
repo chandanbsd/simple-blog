@@ -3,10 +3,11 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     server: {
         proxy: {
-            '/weatherforecast': {
-                target: 'http://your-backend-server-url',
+            '/api': {
+                target: 'https://localhost:32771',
                 changeOrigin: true,
-                secure: false,
+                secure: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
             },
         },
     },
