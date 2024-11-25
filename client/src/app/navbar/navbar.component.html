@@ -1,12 +1,27 @@
-<mat-toolbar color="primary">
-  <span>MyApp</span>
-  <span class="spacer"></span>
-  <button mat-button >Home</button>
-  <button mat-button >Features</button>
-  <button mat-button >Pricing</button>
-  <button mat-button [matMenuTriggerFor]="menu">More</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item >About</button>
-    <button mat-menu-item >Contact</button>
-  </mat-menu>
-</mat-toolbar>
+<div>
+  <mat-toolbar color="primary" class="navbar">
+    <span class="spacer" >Simple Blog</span>
+    <div routerLink="/">
+      <button mat-fab extended>
+        <mat-icon>newspaper</mat-icon>
+        Read
+      </button>
+    </div>
+
+    <div routerLink="/">
+      <button mat-fab extended>
+        <mat-icon>edit_note</mat-icon>
+        Post
+      </button>
+    </div>
+
+    <button mat-mini-fab aria-label="Account Profile" [matMenuTriggerFor]="menu">
+      <mat-icon aria-hidden="false" aria-label="profile" fontIcon="account_circle"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" routerLink="/User">
+      <button mat-menu-item>Login</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+
+  </mat-toolbar>
+</div>
